@@ -18,13 +18,20 @@ function cartesianProduct(arr) {
 
 const ALL_POSSIBLE_CODES = cartesianProduct([1, 2, 3, 4, 5, 6]);
 
-function evaluateGuess(guess, trueCode) {
+let codes = ALL_POSSIBLE_CODES;
+
+function evaluateGuess(guess, code) {
     let D = 0;
     let I = 0;
+    let trueCode = [... code];
     for (let i = 0; i < 4; i++) {
         if (guess[i] == trueCode[i]) {
             D += 1;
-        } else if (trueCode.includes(guess[i])) {
+            trueCode[trueCode.indexOf(guess[i])] = "hello";
+        }
+    }
+    for (let i = 0; i < 4; i++) {
+        if (trueCode.includes(guess[i])) {
             I += 1;
             trueCode[trueCode.indexOf(guess[i])] = "hello";
         }
@@ -42,7 +49,7 @@ function prune(possibleCodes) {
     }
 }
 
-// worst 
+// worst
 function adversarialPrune(guess, possibleCodes) {
     const countMap = new Map();
     const codeMap = new Map();
@@ -89,6 +96,14 @@ function toInts(s) {
     return arr;
 }
 
+codes = adversarialPrune([1, 1, 2, 2], ALL_POSSIBLE_CODES).arr;
+let codes2 = adversarialPrune([2, 2, 3, 3], codes).arr;
+let codes3 = adversarialPrune([3, 1, 1, 3], codes2).arr;
+let codes4 = adversarialPrune([2, 2, 2, 2], codes3).arr;
+
+
+
+
 
 /**
  * 
@@ -131,7 +146,8 @@ function findWorst(guess, possibleCodes) {
 
 
 
-export {ALL_POSSIBLE_CODES, adversarialPrune, toInts}
+module.exports =  {ALL_POSSIBLE_CODES, evaluateGuess, adversarialPrune, findMaxKey, toInts};
+
 
 
 /**
