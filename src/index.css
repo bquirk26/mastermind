@@ -16,3 +16,13 @@ th, td {
   border: 1px solid black;
   margin: 0px;
 }
+
+#dot {
+ width: 30px; 
+ height: 10px;
+ background-color: red;
+}
+
+h1 {
+  color: blue;
+}

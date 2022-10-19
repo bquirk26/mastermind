@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.dot {
+  margin: 2px;
+  width: 30px; 
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block;
+ }
+
+ .buttonDot {
+  margin: 2px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-block
+ }
