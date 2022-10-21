@@ -48,6 +48,7 @@ const App = () => {
 
   const reset = () => {
     setCurrent(EMPTY_ARR)
+    setIndex(0)
   }
 
   const toIntArray = (s) => {
@@ -96,14 +97,15 @@ const App = () => {
       <div id = "player">
         <h1>Mastermind</h1>
         <table>
-          <tbody>
+          <tbody id = "guesses">
             <tr key = 'a'><td>Guess</td><td>Result</td></tr>
               {[... previousGuesses.keys()].map( (key) =><tr key = {key}><td><Guess guess = {key}></Guess></td>
               <td><Result result = {guessToInts(previousGuesses.get(key))}></Result></td>
+              
               </tr>)}
+            <tr><td><Guess guess = {currentGuess}></Guess></td></tr>
           </tbody>
         </table>
-        <Guess guess = {currentGuess}></Guess>
         <Input handler = {handleDot}></Input>
         <div id = "reset-delete">
                 <button onClick = {deleteDot}>delete</button>

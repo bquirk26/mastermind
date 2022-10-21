@@ -75,3 +75,27 @@
   flex-direction: column;
  }
 
+ #main {
+  display: flex;
+  justify-content: center;
+ }
+
+ :root {
+  background-color: #3a6b33;
+ }
+
+ #player {
+  border: 5px solid #214d1c;
+  border-radius: 1%;
+  padding: 15px;
+  background-color: #589c4f;
+ }
+
+ #guesses {
+  display: flex;
+  flex-direction: column-reverse;
+ }
+
+ h1 {
+  text-align: center;
+ }
