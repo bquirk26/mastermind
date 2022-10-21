@@ -52,3 +52,26 @@
   border-radius: 50%;
   display: inline-block
  }
+
+ #reset-delete {
+  width: 206px;
+  display: flex;
+ }
+
+ #reset-delete button {
+  flex: 1;
+ }
+
+ .peg {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  display: inline-block;
+ }
+
+ #res {
+  display:flex;
+  flex-direction: column;
+ }
+

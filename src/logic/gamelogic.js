@@ -24,16 +24,18 @@ function evaluateGuess(guess, code) {
     let D = 0;
     let I = 0;
     let trueCode = [... code];
+    let trueGuess = [...guess]
     for (let i = 0; i < 4; i++) {
-        if (guess[i] == trueCode[i]) {
+        if (trueGuess[i] == trueCode[i]) {
             D += 1;
-            trueCode[trueCode.indexOf(guess[i])] = "hello";
+            trueCode[trueCode.indexOf(trueGuess[i])] = "hello";
+            trueGuess[i] = "squid";
         }
     }
     for (let i = 0; i < 4; i++) {
-        if (trueCode.includes(guess[i])) {
+        if (trueCode.includes(trueGuess[i])) {
             I += 1;
-            trueCode[trueCode.indexOf(guess[i])] = "hello";
+            trueCode[trueCode.indexOf(trueGuess[i])] = "hello";
         }
     }
     return [D, I]
@@ -67,6 +69,8 @@ function adversarialPrune(guess, possibleCodes) {
             codeMap.set(hint, [code])
         }
     }
+    console.log(countMap)
+    console.log(codeMap)
     let finalHint = findMaxKey(countMap)
     return {hint: finalHint, arr : codeMap.get(finalHint)};
 }
@@ -96,12 +100,32 @@ function toInts(s) {
     return arr;
 }
 
-codes = adversarialPrune([1, 1, 2, 2], ALL_POSSIBLE_CODES).arr;
-let codes2 = adversarialPrune([2, 2, 3, 3], codes).arr;
-let codes3 = adversarialPrune([3, 1, 1, 3], codes2).arr;
-let codes4 = adversarialPrune([2, 2, 2, 2], codes3).arr;
+let g1 = adversarialPrune([1, 1, 2, 2], ALL_POSSIBLE_CODES);
+console.log(g1.hint)
+let g2 = adversarialPrune([2, 2, 3, 3], g1.arr);
+console.log(g2.hint)
+let g3 = adversarialPrune([3, 1, 1, 3], g2.arr);
+console.log(g3.hint)
+let g4 = adversarialPrune([2, 2, 2, 2], g3.arr);
 
+const playGame = (guessArray) => {
+    let ourcodes = ALL_POSSIBLE_CODES
+    for (let i = 0; i < guessArray.length; i++) {
+        let res = adversarialPrune(guessArray[i], ourcodes)
+        ourcodes = res.arr
+        console.log(`guess: ${guessArray[i]}, hint: ${res.hint}, codes: ${ourcodes.length < 10 ? ourcodes : ''}`)
+    }
+}
 
+//playGame([[1, 1, 2, 2], [2, 2, 3, 3], [4, 4, 5, 5], [1, 3, 4, 5]]) 
+
+const playNormal = (guessArray, code) => {
+    for (let i = 0; i < guessArray.length; i++) {
+        console.log(`guess: ${guessArray[i]} hint: ${evaluateGuess(guessArray[i], code)}`);
+    }
+}
+let ga = [[1, 1, 2, 3], [4, 5, 6, 6], [4, 2, 4, 6], [6, 3, 2, 1], [2, 2, 3, 3]]
+playNormal(ga, [4, 2, 4, 6]);
 
 
 

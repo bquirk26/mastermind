@@ -10,8 +10,10 @@ const Dot = ({n}) => {
         color = {backgroundColor: 'purple'}
     } else if (n === 5) {
         color = {backgroundColor: 'orange'}
-    } else {
+    } else if (n == 6) {
         color = {backgroundColor: 'aqua'}
+    } else {
+        color = {backgroundColor: 'white'}
     }
 
     return (
