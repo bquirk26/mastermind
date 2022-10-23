@@ -39,8 +39,8 @@
 
 .dot {
   margin: 2px;
-  width: 30px; 
-  height: 30px;
+  width: 40px;; 
+  height: 40px;
   border-radius: 50%;
   display: inline-block;
  }
@@ -53,14 +53,30 @@
   display: inline-block
  }
 
- #reset-delete {
-  width: 206px;
+ #buttons {
   display: flex;
  }
 
- #reset-delete button {
+ #reset-delete {
+  display: flex;
   flex: 1;
+  flex-direction: column;
  }
+
+ #buttons button {
+  margin: 1px;
+  background-color: rgb(224, 224, 224);
+  border: 0px solid white;
+ }
+
+ #buttons button:hover {
+  background-color: rgb(205, 205, 205);
+ }
+
+ #enter {
+  flex: 2;
+ }
+
 
  .peg {
   width: 15px;
@@ -77,23 +93,30 @@
 
  #main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
  }
 
  :root {
-  background-color: #3a6b33;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
  }
 
  #player {
-  border: 5px solid #214d1c;
   border-radius: 1%;
   padding: 15px;
-  background-color: #589c4f;
+  display:flex;
+  flex-direction: column;
+  flex: 1 1 100%;
  }
 
  #guesses {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  align-items: center;
+ }
+ #table {
+  flex: 3;
  }
 
  h1 {

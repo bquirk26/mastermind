@@ -94,24 +94,26 @@ const App = () => {
 
   return (
     <div id = "main">
+      <h1>Mastermind</h1>
       <div id = "player">
-        <h1>Mastermind</h1>
-        <table>
+        <table id = "table">
           <tbody id = "guesses">
-            <tr key = 'a'><td>Guess</td><td>Result</td></tr>
-              {[... previousGuesses.keys()].map( (key) =><tr key = {key}><td><Guess guess = {key}></Guess></td>
+              {[... previousGuesses.keys()].map( (key) =><tr class = "fullRes"key = {key}><td><Guess guess = {key}></Guess></td>
               <td><Result result = {guessToInts(previousGuesses.get(key))}></Result></td>
-              
               </tr>)}
-            <tr><td><Guess guess = {currentGuess}></Guess></td></tr>
+            <tr><td><Guess guess = {currentGuess}></Guess></td><td><Result result = {[0, 0]}></Result></td></tr>
           </tbody>
         </table>
-        <Input handler = {handleDot}></Input>
-        <div id = "reset-delete">
-                <button onClick = {deleteDot}>delete</button>
-                <button onClick = {reset}>reset</button>
+        <div id = "input">
+          <Input handler = {handleDot}></Input>
+          <div id = "buttons">
+              <div id = "reset-delete"> 
+                <button onClick = {deleteDot}>⌫</button>
+                <button onClick = {reset}>⟲</button>
+              </div>
+              <button id = "enter" onClick = {make2}>enter</button>
+          </div>
         </div>
-        <button onClick = {make2}>make!</button>
       </div>
     </div>
   ) 

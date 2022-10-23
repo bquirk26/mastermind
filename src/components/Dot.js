@@ -13,7 +13,7 @@ const Dot = ({n}) => {
     } else if (n == 6) {
         color = {backgroundColor: 'aqua'}
     } else {
-        color = {backgroundColor: 'white'}
+        color = {backgroundColor: "rgb(224, 224, 224)"}
     }
 
     return (

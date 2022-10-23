@@ -2,24 +2,24 @@
 
 const Result = ({result}) => {
     console.log(result)
-    let arr1 = new Array()
-    let arr = new Array();
+    let arr1 = [{border: "0px solid white"}, {border: "0px solid white"}]
+    let arr = [...arr1]
 
     let j = 0;
 
     for(let i = 0; i < result[0]; i++) {
         if (j > 1) {
-            arr1.push({backgroundColor: 'black'})
+            arr1[j-2] = {backgroundColor: 'black'};
         } else {
-            arr.push({backgroundColor: "black"})
+            arr[j] = {backgroundColor: 'black'}
         }
         j++;
     }
     for (let i = 0; i < result[1]; i++) {
         if (j > 1) {
-            arr1.push({backgroundColor: 'white'})
+            arr1[j-2] = {backgroundColor: 'white'}
         } else {
-            arr.push({backgroundColor: "white"})
+            arr[j] = ({backgroundColor: "white"})
         }
         j++;
     }
